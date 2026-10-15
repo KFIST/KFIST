@@ -1,50 +1,35 @@
-<h1 align="center">KFIST</h1>
+<h1 align="center"><a href="https://realmpt.me">realmpt.me</a></h1>
 <p align="center">
-  Reverse engineering for Windows binaries, device tools, and firmware.
-</p>
-<p align="center">
-  <img alt="Windows PE" src="https://img.shields.io/badge/Windows%20PE-141414?style=flat-square" />
-  <img alt=".NET" src="https://img.shields.io/badge/.NET-141414?style=flat-square" />
-  <img alt="Qt" src="https://img.shields.io/badge/Qt-141414?style=flat-square" />
-  <img alt="MediaTek" src="https://img.shields.io/badge/MediaTek-141414?style=flat-square" />
-  <img alt="Firmware" src="https://img.shields.io/badge/Firmware-141414?style=flat-square" />
-  <img alt="Protocols" src="https://img.shields.io/badge/Protocols-141414?style=flat-square" />
+  Reverse engineering for Windows binaries, device tools, and firmware.<br>
+  <a href="https://realmpt.me">https://realmpt.me</a>
 </p>
 
-I take a program apart until the structure is clear, then write that structure down so it can be read without the binary open.
+The binary stays on the bench. The note is what gets kept: names, offsets, and the path through the program.
 
-## What I reverse
+## What gets opened
 
-| Area | What I open | What the note shows |
-| --- | --- | --- |
-| **Windows native** | 32-bit and 64-bit EXEs and DLLs, including packed modules | Sections, imports, exports, delayed loads, and the call sites that do the real work |
-| **.NET desktop** | WPF and WinForms tools | CIL flow, where the UI stops, and where native code starts |
-| **Qt clients** | Qt desktop tools | Windows, workers, and the requests the client sends |
-| **Flash stacks** | MediaTek Boot ROM and download-agent libraries | Public exports, the session object, and the stage the tool is in |
-| **Device clients** | Service and login tools | How identity is built, what is stored on disk, and how the tool reaches the phone |
-| **Protocols** | HTTPS and WebSocket clients | Message shape, update checks, and command paths |
-| **Firmware** | Device images and embedded filesystems | Layout, the files that matter, and how the image is packed |
-
-## How a note is written
-
-The same order every time, so a note stands on its own.
-
-1. **Triage.** File type, hashes, architecture, entropy, and whether a packer is sitting on the code.
-2. **Format.** Sections, entry point, imports, exports, and libraries loaded later.
-3. **Structure.** The objects that own the work. Sessions, stages, and the functions that move them.
-4. **Boundary.** Where native code, managed code, and the network meet.
-5. **Result.** Names, offsets, and flow. Keys, tokens, and private material stay out of the write-up.
-
-## Toolchain
-
-| Job | Tools |
+| | |
 | --- | --- |
-| Static | Ghidra |
-| Debug | x64dbg, WinDbg |
-| Managed | ILSpy, dnSpy |
-| Dynamic | Frida, when the sample is mine to run |
-| Notes and builds | Python, C, C#, Qt |
+| **Windows** | Packed EXEs and DLLs. Sections, imports, delayed loads, and the call that does the work. |
+| **.NET** | WPF and WinForms. Where the screen ends and native code begins. |
+| **Qt** | Desktop clients. The window, the worker, and the request that leaves the machine. |
+| **Flash stacks** | MediaTek Boot ROM and download-agent libraries. Exports, the session, and the stage. |
+| **Device clients** | How a service tool builds identity, what it stores, and how it reaches the phone. |
+| **Protocols** | HTTPS and WebSocket. Message shape, update checks, and command paths. |
+| **Firmware** | Image layout, the filesystem, and the files that matter. |
 
-## Scope
+## How a note runs
 
-Study of software I am allowed to open. Notes describe how a program is built. They do not publish keys, credentials, or steps that break someone else's lock.
+`triage` — file type, hashes, architecture, entropy, and whether a packer is in the way.
+
+`format` — sections, entry point, imports, exports, and libraries loaded later.
+
+`structure` — the objects that own the work. Sessions, stages, and the functions that move them.
+
+`boundary` — where native code, managed code, and the network meet.
+
+`result` — names, offsets, and flow. Keys and tokens stay out of the note.
+
+## Bench
+
+Ghidra · x64dbg · WinDbg · ILSpy · dnSpy · Frida · Python · C · C# · Qt
