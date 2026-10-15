@@ -1,7 +1,7 @@
-<h1 align="center"><a href="https://realmpt.me">realmpt.me</a></h1>
+<h1 align="center"><a href="https://farhadkhan.in">Farhad Khan</a></h1>
 <p align="center">
   Reverse engineering for Windows binaries, device tools, and firmware.<br>
-  <a href="https://realmpt.me">https://realmpt.me</a>
+  <a href="https://farhadkhan.in">farhadkhan.in</a>
 </p>
 
 The binary stays on the bench. The note is what gets kept: names, offsets, and the path through the program.
